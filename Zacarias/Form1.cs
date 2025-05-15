@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,183 +15,408 @@ namespace Zacarias
 {
     public partial class Form1 : Form
     {
-        string[] Person = new string[5];
-        Form2 disp = new Form2();
-        int Age;
-        MyLogs log = new MyLogs();
 
-        public Form1()
+        private Form2 form2;
+        Workbook book = new Workbook();
+        public Form1(Form2 form)
         {
             InitializeComponent();
-            
+            form2 = form;
         }
-
-
-        public void LoadData(int index, string name, string gender, string hobby, string color, string saying)
+        private bool ValidateMyForm()
         {
-            selectedIndex = index;
-            txtName.Text = name;
+            string message = "";
+            bool isValid = true;
 
-            rdbMale.Checked = gender == "Male";
-            rdbFemale.Checked = gender == "Female";
+            bool hasRadioSelected = false;
+            bool hasCheckboxSelected = false;
 
-            chkBasketball.Checked = hobby.Contains("Basketball");
-            chkVolleyball.Checked = hobby.Contains("Volleyball");
-            chkSoccer.Checked = hobby.Contains("Soccer");
+            foreach (Control ctrl in GetAllControls(this))
+            {
+                if (ctrl is TextBox textBox)
+                {
+                    if (string.IsNullOrWhiteSpace(textBox.Text))
+                    {
+                        message += (textBox.Tag?.ToString() ?? textBox.Name) + " is required.\n";
+                        textBox.BackColor = Color.LightPink;
+                        isValid = false;
+                    }
+                    else
+                    {
+                        textBox.BackColor = Color.White;
+                    }
+                }
+                else if (ctrl is ComboBox comboBox)
+                {
+                    if (string.IsNullOrWhiteSpace(comboBox.Text))
+                    {
+                        message += (comboBox.Tag?.ToString() ?? "Favorite Color") + " is required.\n";
+                        comboBox.BackColor = Color.LightPink;
+                        isValid = false;
+                    }
+                    else
+                    {
+                        comboBox.BackColor = Color.White;
+                    }
+                }
+                else if (ctrl is RadioButton radioButton)
+                {
+                    if (radioButton.Checked)
+                    {
+                        hasRadioSelected = true;
+                    }
+                }
+                else if (ctrl is CheckBox checkBox)
+                {
+                    if (checkBox.Checked)
+                    {
+                        hasCheckboxSelected = true;
+                    }
+                }
+            }
 
-            cmbFavC.SelectedItem = color;
-            txtSaying.Text = saying;
+            if (!hasRadioSelected)
+            {
+                message += "Please select a radio button option.\n";
+                isValid = false;
+            }
 
-            btnAdd.Visible = false;
-            btnUpdate.Visible = true;
+            if (!hasCheckboxSelected)
+            {
+                message += "Please check at least one checkbox.\n";
+                isValid = false;
+            }
+
+            if (!isValid)
+            {
+                MessageBox.Show(message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return isValid;
         }
-
-        private void txtName_TextChanged(object sender, EventArgs e)
+        private IEnumerable<Control> GetAllControls(Control container)
         {
-           
+            foreach (Control ctrl in container.Controls)
+            {
+                foreach (Control child in GetAllControls(ctrl))
+                {
+                    yield return child;
+                }
+                yield return ctrl;
+            }
         }
+
+
+        public void InsertUpdatedData(int ID, string name, string gender, string hobbies, string favcolor, string saying, string course, string username, string password, string status, string email, string profilepath)
+        {
+            try
+            {
+                string rad = "";
+                string chk = "";
+                if (radFemale.Checked)
+                {
+                    rad = radFemale.Text;
+                }
+                else if (radMale.Checked)
+                {
+                    rad = radMale.Text;
+                }
+
+                if (chkBasketball.Checked)
+                {
+                    chk += $"{chkBasketball.Text} ";
+                }
+                if (chkOG.Checked)
+                {
+                    chk += $"{chkOG.Text} ";
+                }
+                if (chkVolleyball.Checked)
+                {
+                    chk += $"{chkVolleyball.Text} ";
+                }
+                if (chkOthers.Checked)
+                {
+                    chk += $"{chkOthers.Text} ";
+                }
+
+                //string data = "";
+
+                //data += $"{txtName.Text}, ";
+                //data += $"{rad}, ";
+                //data += $"{chk}, ";
+                //data += $"{cmbFavcolor.SelectedItem}, ";
+                //data += $"{txtSaying.Text}";
+
+                //people[i] = data;
+                name = txtName.Text;
+                favcolor = cmbFavcolor.Text;
+                saying = txtSaying.Text;
+                username = txtUserName.Text;
+                password = txtPassword.Text;
+                status = txtStatus.Text;
+                email = txtEmail.Text;
+                profilepath = pathpic;
+
+                ID = Convert.ToInt32(lblID.Text);
+
+                form2.GetUpdatedDataFromFr1(ID, name, rad, chk, favcolor, saying, course, username, password, status, email, profilepath, CalculateAge(dateTimePicker1.Value).ToString());
+                form2.UpdateDataToExcel(ID, name, rad, chk, favcolor, saying, course, username, password, status, email, profilepath, CalculateAge(dateTimePicker1.Value).ToString());
+                form2.LoadActiveData();
+                form2.Show();
+                this.Hide();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void InsertData(string name, string gender, string hobbies, string favcolor, string saying, string course, string username, string password, string status, string email, string profilepath, string age)
+        {
+            try
+            {
+                book.LoadFromFile(path.pathfile); //Change the path to where is the excel locate.
+                Worksheet sheet = book.Worksheets[0];
+                int i = sheet.Rows.Length + 1;
+
+                string rad = "";
+                string chk = "";
+                if (radFemale.Checked)
+                {
+                    rad = radFemale.Text;
+                }
+                else if (rdbMale.Checked)
+                {
+                    rad = rdbMale.Text;
+                }
+
+                if (chkBasketball.Checked)
+                {
+                    chk += $"{chkBasketball.Text} ";
+                }
+                if (chkSoccer.Checked)
+                {
+                    chk += $"{chkSoccer.Text} ";
+                }
+                if (chkVolleyball.Checked)
+                {
+                    chk += $"{chkVolleyball.Text} ";
+                }
+                //string data = "";
+
+                //data += $"{txtName.Text}, ";
+                //data += $"{rad}, ";
+                //data += $"{chk}, ";
+                //data += $"{cmbFavcolor.SelectedItem}, ";
+                //data += $"{txtSaying.Text}";
+
+                //people[i] = data;
+
+
+                //form2.GetDataFromFr1(name, rad, chk, favcolor, saying);
+
+                sheet.Range[i, 1].Value = name;
+                sheet.Range[i, 2].Value = rad;
+                sheet.Range[i, 3].Value = chk;
+                sheet.Range[i, 4].Value = favcolor;
+                sheet.Range[i, 5].Value = saying;
+                sheet.Range[i, 6].Value = course;
+                sheet.Range[i, 7].Value = email;
+                sheet.Range[i, 8].Value = age;
+                sheet.Range[i, 9].Value = username;
+                sheet.Range[i, 10].Value = password;
+                sheet.Range[i, 11].Value = status;
+                sheet.Range[i, 12].Value = profilepath;
+
+                book.SaveToFile(path.pathfile);
+                Logs.Log(Admin.Name, $"Inserting a data");
+                Form4 form4 = new Form4(Admin.Name);
+
+                SendBirthdateToExcel(txtUserName.Text, dateTimePicker1.Value);
+
+                DataSorting.datasorting();
+
+                txtName.Text = string.Empty;
+                txtSaying.Text = string.Empty;
+                txtUsername.Text = string.Empty;
+                txtPass.Text = string.Empty;
+                rdbFemale.Checked = false;
+                rdbMale.Checked = false;
+                chkBasketball.Checked = false;
+                chkSoccer.Checked = false;
+                chkVolleyball.Checked = false;
+                cmbFavC.Text = string.Empty;
+                txtStatus.Text = string.Empty;
+                txtCourse.Text = string.Empty;
+                txtEmail.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void SendBirthdateToExcel(string name, DateTime date)
+        {
+            book.LoadFromFile(path.pathfile); //Change the path to where is the excel locate.
+            Worksheet sheet = book.Worksheets[2];
+
+            int i = sheet.Rows.Length + 1;
+
+            sheet.Range[i, 1].Value = name;
+            sheet.Range[i, 2].Value = date.ToString("MM/dd/yyyy");
+
+            book.SaveToFile(path.pathfile);
+        }
+
+        public int CalculateAge(DateTime date)
+        {
+            int age = 0;
+            if (date < DateTime.Now)
+            {
+                int days = (DateTime.Now - dateTimePicker1.Value).Days;
+                age = days / 365;
+            }
+
+            return age;
+        }
+
+
+        //public void LoadData(int index, string name, string gender, string hobby, string color, string saying)
+        //{
+        //    selectedIndex = index;
+        //    txtName.Text = name;
+
+        //    rdbMale.Checked = gender == "Male";
+        //    rdbFemale.Checked = gender == "Female";
+
+        //    chkBasketball.Checked = hobby.Contains("Basketball");
+        //    chkVolleyball.Checked = hobby.Contains("Volleyball");
+        //    chkSoccer.Checked = hobby.Contains("Soccer");
+
+        //    cmbFavC.SelectedItem = color;
+        //    txtSaying.Text = saying;
+
+        //    btnAdd.Visible = false;
+        //    btnUpdate.Visible = true;
+        //}
+
+        //private void txtName_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
-            int i = 0;
-            string data = "", gender = "", hobbies = "";
-            data += txtName.Text;
-            if (rdbMale.Checked)
+            string rad = "";
+            string chk = "";
+            bool isRepeated = false;
+
+            book.LoadFromFile(path.pathfile); //Change the path to where is the excel locate.
+            Worksheet sheet = book.Worksheets[0];
+
+            if (ValidateMyForm())
             {
-                gender = rdbMale.Text;
-                data += gender;
+                string email = txtEmail.Text;
+                string gmailPattern = @"^[a-zA-Z0-9._%+-]+@gmail\.com$";
+                if (!Regex.IsMatch(email, gmailPattern))
+                {
+                    MessageBox.Show("Please enter a valid Gmail address (e.g., example@gmail.com).", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtEmail.Focus();
+                    return;
+                }
+                else
+                {
+                    for (int i = 2; i <= sheet.Rows.Length; i++)
+                    {
+                        if (sheet.Range[i, 9].Value == txtUserName.Text)
+                        {
+                            isRepeated = true;
+                            break;
+                        }
+                        else
+                        {
+                            isRepeated = false;
+                        }
+                    }
+                }
             }
-            else if (rdbFemale.Checked)
+
+            if (isRepeated == true)
             {
-                gender = rdbFemale.Text;
-                data += gender;
+                MessageBox.Show("Username already exists. Please choose a different username.", "Duplicate Username", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsername.Focus();
             }
-            data += lblAddress.Text;
-            data += txtEmail.Text;
-            data += dtpBday.Value;
-            data += Age.ToString();
-            if (chkBball.Checked)
+            else if (isRepeated == false)
             {
-                hobbies += chkBball.Text + ", ";
-            }
-            if (chkVball.Checked)
-            {
-                hobbies += chkVball.Text + ", ";
-            }
-            if (chkSoccer.Checked)
-            {
-                hobbies += chkSoccer.Text;
-            }
-            data += hobbies;
-            data += cbxColor.Text;
-            data += txtSaying.Text;
-            data += txtUser.Text;
-            string password = txtPass.Text;
-            Person[i] = data;
-            MessageBox.Show("Succesfully Added!");
-            Workbook workbook = new Workbook();
-            workbook.LoadFromFile(@"C:\Users\ACT-STUDENT\Desktop");
-            Worksheet sheets = workbook.Worksheets[0];
-            int row = sheets.Rows.Length + 1;
-            sheets.Range[row, 1].Value = txtName.Text;
-            sheets.Range[row, 2].Value = gender;
-            sheets.Range[row, 3].Value = lblAddress.Text;
-            sheets.Range[row, 4].Value = txtEmail.Text;
-            sheets.Range[row, 5].Value = dtpBday.Text;
-            sheets.Range[row, 6].Value = Age.ToString();
-            sheets.Range[row, 7].Value = hobbies;
-            sheets.Range[row, 8].Value = cbxColor.Text;
-            sheets.Range[row, 9].Value = txtSaying.Text;
-            sheets.Range[row, 10].Value = txtUser.Text;
-            sheets.Range[row, 11].Value = password;
-            sheets.Range[row, 13].Value = txtProfilePic.Text;
-            workbook.SaveToFile(@"C:\Users\ACT-STUDENT\Desktop\bjeeeeccccccc\EVEDRI-Database.xlsx", ExcelVersion.Version2016);
-            DataTable dt = sheets.ExportDataTable();
-            disp.dataGridView1.DataSource = dt;
-            log.InsertLogs(lbluserDis.Text, lbluserDis + " added a new record");
-            i++;
-        }
-
-            if (i < 5)
-            {
-                names[i] = txtName.Text;
-                genders[i] = rdbMale.Checked ? "Male" : "Female";
-
-                // Use a list for hobbies to ensure proper formatting
-                List<string> selectedHobbies = new List<string>();
-                if (chkBasketball.Checked) selectedHobbies.Add("Basketball");
-                if (chkVolleyball.Checked) selectedHobbies.Add("Volleyball");
-                if (chkSoccer.Checked) selectedHobbies.Add("Soccer");
-
-                hobbies[i] = selectedHobbies.Count > 0 ? string.Join(", ", selectedHobbies) : "None";
-
-                colors[i] = cmbFavC.SelectedItem?.ToString() ?? "None";
-                sayings[i] = txtSaying.Text;
-
-                i++;
-
                 MessageBox.Show("Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Too much data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                InsertData(txtName.Text, rad, chk, cmbFavC.Text, txtSaying.Text, txtCourse.Text, txtUsername.Text, txtPass.Text, txtStatus.Text, txtEmail.Text, pathpic, CalculateAge(dateTimePicker1.Value).ToString());
+                SaveImageToSavedPhoto();
             }
 
-            // Clear input fields
-            txtName.Clear();
-            rdbMale.Checked = rdbFemale.Checked = false;
-            chkBasketball.Checked = chkVolleyball.Checked = chkSoccer.Checked = false;
-            cmbFavC.SelectedIndex = -1; // Properly resets combo box
-            txtSaying.Clear();
-        }
-        
 
-        private void btnDisplay_Click(object sender, EventArgs e)
+    private void btnDisplay_Click(object sender, EventArgs e)
         {
 
-
-            Form2 form2 = new Form2(this, names, genders, hobbies, colors, sayings, i);
+            this.Hide();
             form2.Show();
-
+            form2.LoadActiveData();
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (selectedIndex >= 0 && selectedIndex < i)
+            string email = txtEmail.Text;
+            string gmailPattern = @"^[a-zA-Z0-9._%+-]+@gmail\.com$";
+            if (!Regex.IsMatch(email, gmailPattern))
             {
-                names[selectedIndex] = txtName.Text;
-                genders[selectedIndex] = rdbMale.Checked ? "Male" : "Female";
-
-                hobbies[selectedIndex] = "";
-                if (chkBasketball.Checked) hobbies[selectedIndex] += "Basketball ";
-                if (chkVolleyball.Checked) hobbies[selectedIndex] += "Volleyball ";
-                if (chkSoccer.Checked) hobbies[selectedIndex] += "Soccer";
-                hobbies[selectedIndex] = hobbies[selectedIndex].Trim();
-
-                colors[selectedIndex] = cmbFavC.SelectedItem?.ToString() ?? "None";
-                sayings[selectedIndex] = txtSaying.Text;
-
-                MessageBox.Show("Updated Successfully");
+                MessageBox.Show("Please enter a valid Gmail address (e.g., example@gmail.com).", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEmail.Focus();
+                return;
             }
             else
             {
-                MessageBox.Show("Invalid selection");
+
+                SaveImageToSavedPhoto();
+
+                int ID = Convert.ToInt32(lblID.Text);
+                string rad = "";
+                string chk = "";
+
+
+                InsertUpdatedData(ID, txtName.Text, rad, chk, cmbFavC.Text, txtSaying.Text, txtCourse.Text, txtUsername.Text, txtPass.Text, txtStatus.Text, txtEmail.Text, pathpic);
             }
-
-            txtName.Text = string.Empty;
-            rdbMale.Checked = false;
-            rdbFemale.Checked = false;
-            chkBasketball.Checked = false;
-            chkVolleyball.Checked = false;
-            chkSoccer.Checked = false;
-            cmbFavC.Text = "";
-            txtSaying.Text = string.Empty;
         }
+        private void btnChoosePic_Click(object sender, EventArgs e)
+        {
 
-        
-    }
-    }
+        }
+        string pathpic = "";
+        private void SaveImageToSavedPhoto()
+        {
+            if (pictureBox1.Image != null)
+            {
+                string savedPhotoFolder = Path.Combine(Application.StartupPath, "SavedPhoto");
 
-        
-    
+                if (!Directory.Exists(savedPhotoFolder))
+                {
+                    Directory.CreateDirectory(savedPhotoFolder);
+                }
+
+                string fileName = txtUsername.Text + ".png";
+                string savePath = Path.Combine(savedPhotoFolder, fileName);
+
+                pathpic = savePath;
+
+                pictureBox1.Image.Save(savePath, System.Drawing.Imaging.ImageFormat.Png);
+            }
+            else
+            {
+                MessageBox.Show("No image in PictureBox to save.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
+}
+
+
+

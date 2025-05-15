@@ -75,7 +75,7 @@ namespace Zacarias
             }
             private void btnLogOut_Click(object sender, EventArgs e)
             {
-                logs.InsertLogs(lblUserDisplay.Text, lblUserDisplay.Text + " has logged out their account.");
+                logs.InsertLogs(lblID.Text, lblID.Text + " has logged out their account.");
                 this.Close();
                 LoginForm logIN = new LoginForm();
                 logIN.Show();

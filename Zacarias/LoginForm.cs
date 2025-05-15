@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,55 +12,66 @@ using System.Windows.Forms;
 
 namespace Zacarias
 {
-    public partial class LoginForm : Form
+    public partial class Form3 : Form
     {
-        MyLogs logs = new MyLogs(); //referencing
-        Dashboard dashB = (Dashboard)Application.OpenForms["DashBoard"];
-        Dashboard dash = new Dashboard();
-        public LoginForm()
+        public Form3()
         {
             InitializeComponent();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        Form4 form4;
+
+
+        private void btnLogin_Click(object sender, EventArgs e)
         {
+            Workbook book = new Workbook();
+            book.LoadFromFile(path.pathfile); //Change the path to where is the excel locate.
+            Worksheet sheet = book.Worksheets[0];
 
-            
-           
-                Workbook book = new Workbook();
-                book.LoadFromFile(@"C:\Users\ACT-STUDENT\Desktop\Book1.xlsx");
+            int row = sheet.Rows.Length;
+            bool log = false;
 
-                Worksheet sheet = book.Worksheets[0];
-                int Length = sheet.Rows.Length;
-                bool log = false;
-                for (int i = 2; i <= Length; i++)
+            for (int i = 2; i <= row; i++)
+            {
+                if (sheet.Range[i, 9].Value == txtUserName.Text && sheet.Range[i, 10].Value == txtPassword.Text)
                 {
-                    if (sheet.Range[i, 10].Value == txtUName.Text && sheet.Range[i, 11].Value == txtPass.Text)
-                    {
-                        log = true;
-                        break;
-                    }
-                    else
-                    {
-                        log = false;
-                    }
-                }
-                if (log == true)
-                {
-                    logs.InsertLogs(txtUName.Text, txtUName.Text + " logged in successfully!");
-                    //dash.pbxProfileP.Image = Image.FromFile(@"" + sheet.Range[Length, 13]);
-                    lblUName.Text = txtUName.Text.ToString();
-                    dash.user(lbluDis.Text);
-                    dash.Show();
-                    this.Hide();
+                    Admin.Name = sheet.Range[i, 1].Value;
+                    form4 = new Form4(Admin.Name);
+                    form4.pictureBox1.ImageLocation = sheet.Range[i, 12].Value;
+                    path.picpath = form4.pictureBox1.ImageLocation;
+                    log = true;
+                    break;
                 }
                 else
                 {
-                    MessageBox.Show("Data can't be found.");
+                    log = false;
                 }
-
-
-
             }
-         }
+
+            if (log == true)
+            {
+                MessageBox.Show("Successfully Log in", "Log in", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Logs.Log(Admin.Name, "Has been log in");
+                this.Hide();
+                form4.Show();
+            }
+            else if (log == false)
+            {
+                MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void choShowPsssword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (choShowPsssword.Checked)
+            {
+                txtPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*';
+            }
+        }
     }
+}

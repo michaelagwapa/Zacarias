@@ -1,6 +1,6 @@
 ﻿namespace Zacarias
 {
-    partial class LoginForm
+    partial class Form3
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@
             // txtUName
             // 
             this.txtUName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUName.Location = new System.Drawing.Point(141, 133);
+            this.txtUName.Location = new System.Drawing.Point(388, 195);
             this.txtUName.Name = "txtUName";
             this.txtUName.Size = new System.Drawing.Size(271, 24);
             this.txtUName.TabIndex = 16;
@@ -46,8 +46,9 @@
             // lblUName
             // 
             this.lblUName.AutoSize = true;
+            this.lblUName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblUName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUName.Location = new System.Drawing.Point(39, 133);
+            this.lblUName.Location = new System.Drawing.Point(286, 195);
             this.lblUName.Name = "lblUName";
             this.lblUName.Size = new System.Drawing.Size(96, 20);
             this.lblUName.TabIndex = 15;
@@ -56,17 +57,16 @@
             // txtPass
             // 
             this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Location = new System.Drawing.Point(141, 205);
+            this.txtPass.Location = new System.Drawing.Point(388, 267);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(271, 24);
             this.txtPass.TabIndex = 18;
-        
             // 
             // lblPass
             // 
             this.lblPass.AutoSize = true;
             this.lblPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPass.Location = new System.Drawing.Point(42, 207);
+            this.lblPass.Location = new System.Drawing.Point(289, 269);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(91, 20);
             this.lblPass.TabIndex = 17;
@@ -76,13 +76,13 @@
             // 
             this.btnSubmit.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(212, 301);
+            this.btnSubmit.Location = new System.Drawing.Point(429, 366);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(105, 36);
             this.btnSubmit.TabIndex = 19;
             this.btnSubmit.Text = "SUBMIT";
             this.btnSubmit.UseVisualStyleBackColor = false;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+
             // 
             // LoginForm
             // 
@@ -90,7 +90,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(463, 458);
+            this.BackgroundImage = global::Zacarias.Properties.Resources.pArts;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(946, 535);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.lblPass);
@@ -99,6 +101,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+        
             this.ResumeLayout(false);
             this.PerformLayout();
 
