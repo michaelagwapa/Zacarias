@@ -27,10 +27,13 @@ namespace Zacarias
             this.lblName = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox5
@@ -111,10 +114,28 @@ namespace Zacarias
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(365, 149);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(490, 341);
+            this.dataGridView2.TabIndex = 73;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.MistyRose;
+            this.panel3.Location = new System.Drawing.Point(350, 133);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(520, 371);
+            this.panel3.TabIndex = 72;
+            // 
             // Form3
             // 
             this.BackgroundImage = global::Zacarias.Properties.Resources.pArts2;
             this.ClientSize = new System.Drawing.Size(1046, 571);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel17);
@@ -125,6 +146,7 @@ namespace Zacarias
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -36,21 +35,19 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(1, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(152, 603);
-            this.panel1.TabIndex = 68;
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.pictureBox5);
             this.panel2.Location = new System.Drawing.Point(-1, 0);
             this.panel2.Name = "panel2";
@@ -59,6 +56,7 @@
             // 
             // pictureBox5
             // 
+            this.pictureBox5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = global::Zacarias.Properties.Resources.app;
             this.pictureBox5.Location = new System.Drawing.Point(9, 13);
@@ -113,6 +111,7 @@
             // 
             // pictureBox6
             // 
+            this.pictureBox6.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox6.Location = new System.Drawing.Point(169, 10);
             this.pictureBox6.Name = "pictureBox6";
@@ -121,14 +120,39 @@
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(365, 149);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(490, 341);
+            this.dataGridView1.TabIndex = 70;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.MistyRose;
+            this.panel3.Location = new System.Drawing.Point(350, 134);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(520, 371);
+            this.panel3.TabIndex = 69;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(1, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(152, 603);
+            this.panel1.TabIndex = 68;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Zacarias.Properties.Resources.pArts2;
             this.ClientSize = new System.Drawing.Size(1046, 571);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel17);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form4";
             this.Text = "Form4";
@@ -137,13 +161,12 @@
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel17;
@@ -151,5 +174,8 @@
         public System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblDate;
         public System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel1;
     }
 }

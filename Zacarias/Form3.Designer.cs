@@ -10,6 +10,8 @@
         public System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblDate;
         public System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Panel panel3;
         ///// <summary>
         ///// Required designer variable.
         ///// </summary>

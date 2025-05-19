@@ -36,11 +36,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel17
@@ -122,6 +125,22 @@
             this.pictureBox5.TabIndex = 65;
             this.pictureBox5.TabStop = false;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(350, 133);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(490, 341);
+            this.dataGridView2.TabIndex = 73;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.MistyRose;
+            this.panel3.Location = new System.Drawing.Point(334, 119);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(520, 371);
+            this.panel3.TabIndex = 72;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,6 +148,8 @@
             this.BackgroundImage = global::Zacarias.Properties.Resources.pArts2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1046, 571);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel17);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -140,6 +161,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -154,5 +176,7 @@
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
