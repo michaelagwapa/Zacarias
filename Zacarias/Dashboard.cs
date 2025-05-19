@@ -109,5 +109,10 @@ namespace Zacarias
             {
                 pnlActiveStudents.BringToFront();
             }
+
+        private void lblName_Click(object sender, EventArgs e)
+        {
+
         }
+    }
     }

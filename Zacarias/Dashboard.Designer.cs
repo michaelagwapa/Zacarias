@@ -29,184 +29,118 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblDateVal = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.lblNameVal = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.btnLogOut = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnActive = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnSubmit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlActive = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel1.Controls.Add(this.lblDateVal);
-            this.panel1.Controls.Add(this.lblDate);
-            this.panel1.Controls.Add(this.lblNameVal);
-            this.panel1.Controls.Add(this.lblName);
-            this.panel1.Controls.Add(this.btnLogOut);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.btnActive);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btnSubmit);
+            this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(233, 452);
+            this.panel1.Size = new System.Drawing.Size(157, 569);
             this.panel1.TabIndex = 0;
-            // 
-            // lblDateVal
-            // 
-            this.lblDateVal.AutoSize = true;
-            this.lblDateVal.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateVal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDateVal.Location = new System.Drawing.Point(31, 234);
-            this.lblDateVal.Name = "lblDateVal";
-            this.lblDateVal.Size = new System.Drawing.Size(90, 18);
-            this.lblDateVal.TabIndex = 29;
-            this.lblDateVal.Text = "date_Value";
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDate.Location = new System.Drawing.Point(31, 209);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(51, 14);
-            this.lblDate.TabIndex = 28;
-            this.lblDate.Text = "DATE: ";
-            // 
-            // lblNameVal
-            // 
-            this.lblNameVal.AutoSize = true;
-            this.lblNameVal.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameVal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNameVal.Location = new System.Drawing.Point(31, 173);
-            this.lblNameVal.Name = "lblNameVal";
-            this.lblNameVal.Size = new System.Drawing.Size(99, 18);
-            this.lblNameVal.TabIndex = 27;
-            this.lblNameVal.Text = "name_value";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblName.Location = new System.Drawing.Point(31, 154);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(50, 14);
-            this.lblName.TabIndex = 26;
-            this.lblName.Text = "NAME:";
-            // 
-            // btnLogOut
-            // 
-            this.btnLogOut.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Location = new System.Drawing.Point(0, 402);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(233, 48);
-            this.btnLogOut.TabIndex = 25;
-            this.btnLogOut.Text = "LOGOUT";
-            this.btnLogOut.UseVisualStyleBackColor = false;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(42, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(156, 125);
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnActive
-            // 
-            this.btnActive.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActive.Location = new System.Drawing.Point(0, 310);
-            this.btnActive.Name = "btnActive";
-            this.btnActive.Size = new System.Drawing.Size(233, 48);
-            this.btnActive.TabIndex = 22;
-            this.btnActive.Text = "ACTIVE STUDENT";
-            this.btnActive.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 265);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(233, 48);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "INACTIVE STUDENT";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(0, 356);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(233, 48);
-            this.btnSubmit.TabIndex = 20;
-            this.btnSubmit.Text = "LOGS";
-            this.btnSubmit.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(419, 9);
+            this.label2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label2.Location = new System.Drawing.Point(597, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(369, 59);
             this.label2.TabIndex = 26;
             this.label2.Text = "DASHBOARD";
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox5.Image = global::Zacarias.Properties.Resources.app;
+            this.pictureBox5.Location = new System.Drawing.Point(11, 19);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(55, 49);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 66;
+            this.pictureBox5.TabStop = false;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(182, 82);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(58, 21);
+            this.lblDate.TabIndex = 28;
+            this.lblDate.Text = "label2";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox6.Location = new System.Drawing.Point(186, 19);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(54, 50);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 27;
+            this.pictureBox6.TabStop = false;
+            // 
+            // lblName
+            // 
+            this.lblName.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(277, 82);
+            this.lblName.Name = "lblName";
+            this.lblName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblName.Size = new System.Drawing.Size(120, 21);
+            this.lblName.TabIndex = 29;
+            this.lblName.Text = "0";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Location = new System.Drawing.Point(239, 144);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(763, 185);
+            this.panel6.TabIndex = 30;
+            // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.pnlActive);
-            this.panel2.Location = new System.Drawing.Point(244, 94);
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Location = new System.Drawing.Point(239, 327);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(545, 356);
-            this.panel2.TabIndex = 27;
-            // 
-            // pnlActive
-            // 
-            this.pnlActive.AutoSize = true;
-            this.pnlActive.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlActive.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.pnlActive.Location = new System.Drawing.Point(6, 10);
-            this.pnlActive.Name = "pnlActive";
-            this.pnlActive.Size = new System.Drawing.Size(150, 38);
-            this.pnlActive.TabIndex = 20;
-            this.pnlActive.Text = "ACTIVE";
+            this.panel2.Size = new System.Drawing.Size(763, 185);
+            this.panel2.TabIndex = 31;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label2);
+            this.BackgroundImage = global::Zacarias.Properties.Resources.pArts1;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1046, 571);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dashboard";
             this.Text = "Dashboard";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,17 +149,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.Button btnActive;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label pnlActive;
-        private System.Windows.Forms.Button btnLogOut;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblDateVal;
+        public System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.Label lblNameVal;
-        private System.Windows.Forms.Label lblName;
+        public System.Windows.Forms.PictureBox pictureBox6;
+        public System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel2;
     }
 }

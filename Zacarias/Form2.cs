@@ -156,5 +156,9 @@ namespace Zacarias
             form1.btnDisplay.Visible = false;
             form1.btnAdd.Visible = false;
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+                    }
     }
 }

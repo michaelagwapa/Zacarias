@@ -64,14 +64,7 @@ namespace Zacarias
 
         private void choShowPsssword_CheckedChanged(object sender, EventArgs e)
         {
-            if (choShowPsssword.Checked)
-            {
-                txtPassword.PasswordChar = '\0';
-            }
-            else
-            {
-                txtPassword.PasswordChar = '*';
-            }
+
         }
     }
 }

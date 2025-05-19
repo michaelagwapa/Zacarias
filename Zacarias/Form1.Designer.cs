@@ -83,7 +83,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDisplay = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lblID = new System.Windows.Forms.Label();
             this.panel14.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -598,14 +597,13 @@
             // 
             this.panel17.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel17.Controls.Add(this.lblID);
             this.panel17.Controls.Add(this.dateTimePicker2);
             this.panel17.Controls.Add(this.lblName);
             this.panel17.Controls.Add(this.lblDate);
             this.panel17.Controls.Add(this.pictureBox6);
             this.panel17.Location = new System.Drawing.Point(0, 0);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(1129, 88);
+            this.panel17.Size = new System.Drawing.Size(1129, 80);
             this.panel17.TabIndex = 62;
             // 
             // dateTimePicker2
@@ -687,17 +685,6 @@
             this.btnAdd.TabIndex = 63;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
-            // 
-            // lblID
-            // 
-            this.lblID.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(503, 33);
-            this.lblID.Name = "lblID";
-            this.lblID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblID.Size = new System.Drawing.Size(120, 21);
-            this.lblID.TabIndex = 32;
-            this.lblID.Text = "0";
-            this.lblID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -813,7 +800,6 @@
         public System.Windows.Forms.Button btnUpdate;
         public System.Windows.Forms.Button btnDisplay;
         public System.Windows.Forms.Button btnAdd;
-        public System.Windows.Forms.Label lblID;
     }
 }
 

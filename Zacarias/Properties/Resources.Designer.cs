@@ -63,6 +63,16 @@ namespace Zacarias.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap app {
+            get {
+                object obj = ResourceManager.GetObject("app", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pArts {
             get {
                 object obj = ResourceManager.GetObject("pArts", resourceCulture);
@@ -86,6 +96,16 @@ namespace Zacarias.Properties {
         internal static System.Drawing.Bitmap pArts1 {
             get {
                 object obj = ResourceManager.GetObject("pArts1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pArts2 {
+            get {
+                object obj = ResourceManager.GetObject("pArts2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
